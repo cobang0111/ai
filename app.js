@@ -1,18 +1,11 @@
 (function () {
   const papers = Array.isArray(window.ICLR_PAPERS) ? window.ICLR_PAPERS : [];
-  const storeKey = "iclr-2026-field-notes-v1";
 
   const labels = {
     priority: {
-      high: "높음",
-      medium: "보통",
-      low: "낮음",
-    },
-    status: {
-      todo: "읽기 전",
-      skimmed: "초록 확인",
-      visit: "현장 방문",
-      done: "완료",
+      high: "Lead",
+      medium: "Brief",
+      low: "Mention",
     },
   };
 
@@ -23,7 +16,7 @@
     session: "all",
     priority: "all",
     tag: "all",
-    sort: "priority",
+    sort: "feature",
     flash: null,
   };
 
@@ -33,33 +26,18 @@
     sessionFilters: document.querySelector("#sessionFilters"),
     priorityFilters: document.querySelector("#priorityFilters"),
     tagFilters: document.querySelector("#tagFilters"),
+    leadStory: document.querySelector("#leadStory"),
     paperGrid: document.querySelector("#paperGrid"),
     emptyState: document.querySelector("#emptyState"),
     activeFilters: document.querySelector("#activeFilters"),
     visibleCount: document.querySelector("#visibleCount"),
     statTotal: document.querySelector("#statTotal"),
-    statHigh: document.querySelector("#statHigh"),
-    statNotes: document.querySelector("#statNotes"),
+    statOral: document.querySelector("#statOral"),
+    statTopics: document.querySelector("#statTopics"),
     sessionQueue: document.querySelector("#sessionQueue"),
     topicChart: document.querySelector("#topicChart"),
     resetButton: document.querySelector("#resetButton"),
-    exportButton: document.querySelector("#exportButton"),
   };
-
-  let saved = loadSaved();
-
-  function loadSaved() {
-    try {
-      return JSON.parse(localStorage.getItem(storeKey)) || {};
-    } catch (error) {
-      console.warn("Could not load saved notes", error);
-      return {};
-    }
-  }
-
-  function persist() {
-    localStorage.setItem(storeKey, JSON.stringify(saved));
-  }
 
   function escapeHtml(value) {
     return String(value ?? "")
@@ -68,22 +46,6 @@
       .replaceAll(">", "&gt;")
       .replaceAll('"', "&quot;")
       .replaceAll("'", "&#039;");
-  }
-
-  function effectivePaper(paper) {
-    const paperState = saved[paper.id] || {};
-    return {
-      ...paper,
-      priority: paperState.priority || paper.priority || "medium",
-      status: paperState.status || paper.status || "todo",
-      note: paperState.note || "",
-    };
-  }
-
-  function updateSaved(id, patch) {
-    saved[id] = { ...(saved[id] || {}), ...patch };
-    persist();
-    render();
   }
 
   function unique(values) {
@@ -149,9 +111,17 @@
         return a.title.localeCompare(b.title);
       }
       if (state.sort === "session") {
-        return `${a.session} ${a.slot} ${a.title}`.localeCompare(`${b.session} ${b.slot} ${b.title}`);
+        return `${a.slot} ${a.session} ${a.title}`.localeCompare(`${b.slot} ${b.session} ${b.title}`);
       }
-      return (priorityOrder[a.priority] ?? 9) - (priorityOrder[b.priority] ?? 9) || a.title.localeCompare(b.title);
+
+      const aOral = a.presentation.toLowerCase() === "oral" ? -0.5 : 0;
+      const bOral = b.presentation.toLowerCase() === "oral" ? -0.5 : 0;
+      return (
+        (priorityOrder[a.priority] ?? 9) +
+          aOral -
+          ((priorityOrder[b.priority] ?? 9) + bOral) ||
+        a.title.localeCompare(b.title)
+      );
     });
   }
 
@@ -160,77 +130,6 @@
       return authors.join(", ");
     }
     return `${authors.slice(0, 4).join(", ")} 외 ${authors.length - 4}명`;
-  }
-
-  function optionList(options, selected) {
-    return Object.entries(options)
-      .map(([value, label]) => `<option value="${value}"${value === selected ? " selected" : ""}>${label}</option>`)
-      .join("");
-  }
-
-  function cardTemplate(paper) {
-    const pdfHref = encodeURI(paper.pdf);
-    const isFlash = state.flash === paper.id;
-    const presentationClass = paper.presentation.toLowerCase() === "oral" ? "oral" : "poster";
-
-    return `
-      <article class="paper-card priority-${escapeHtml(paper.priority)}" data-id="${escapeHtml(paper.id)}">
-        <div class="card-top">
-          <span class="paper-id">#${escapeHtml(paper.id)}</span>
-          <span class="badge ${presentationClass}">${escapeHtml(paper.presentation)}</span>
-        </div>
-        <h3>${escapeHtml(paper.title)}</h3>
-        <div class="paper-meta">
-          <span>${escapeHtml(paper.session)}</span>
-          <span>${escapeHtml(paper.slot)}</span>
-          <span>${escapeHtml(authorsLine(paper.authors))}</span>
-        </div>
-        <p class="mini-heading">요약</p>
-        <p class="summary">${escapeHtml(paper.summary)}</p>
-        <p class="mini-heading">볼 포인트</p>
-        <ul class="takeaways">
-          ${paper.takeaways.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}
-        </ul>
-        <p class="mini-heading">질문</p>
-        <p class="summary">${escapeHtml(paper.question)}</p>
-        <div class="tag-list">
-          ${paper.tags.map((tag) => `<span class="tag">${escapeHtml(tag)}</span>`).join("")}
-        </div>
-        <div class="card-form">
-          <label>
-            상태
-            <select data-action="status" data-id="${escapeHtml(paper.id)}">
-              ${optionList(labels.status, paper.status)}
-            </select>
-          </label>
-          <label>
-            우선순위
-            <select data-action="priority" data-id="${escapeHtml(paper.id)}">
-              ${optionList(labels.priority, paper.priority)}
-            </select>
-          </label>
-          <label class="note-field">
-            현장 메모
-            <textarea data-action="note" data-id="${escapeHtml(paper.id)}" placeholder="저자에게 물어볼 점, 관련 아이디어, follow-up">${escapeHtml(paper.note)}</textarea>
-          </label>
-        </div>
-        <div class="card-actions">
-          <a class="icon-button primary" href="${pdfHref}" target="_blank" rel="noopener" title="PDF 열기">
-            ${icon("file")}
-            PDF
-          </a>
-          <a class="icon-button" href="${escapeHtml(paper.source)}" target="_blank" rel="noopener" title="OpenReview 열기">
-            ${icon("external")}
-            OpenReview
-          </a>
-          <button class="icon-button" type="button" data-action="copy" data-id="${escapeHtml(paper.id)}" title="논문 메모 복사">
-            ${icon("copy")}
-            복사
-          </button>
-          ${isFlash ? '<span class="copy-flash">복사됨</span>' : ""}
-        </div>
-      </article>
-    `;
   }
 
   function icon(name) {
@@ -243,10 +142,109 @@
     return icons[name] || "";
   }
 
+  function storyLabel(paper) {
+    const presentation = paper.presentation.toLowerCase() === "oral" ? "Oral" : "Poster";
+    return `${labels.priority[paper.priority] || "Brief"} / ${presentation}`;
+  }
+
+  function linkActions(paper) {
+    const pdfHref = encodeURI(paper.pdf);
+    const isFlash = state.flash === paper.id;
+
+    return `
+      <div class="card-actions">
+        <a class="icon-button primary" href="${pdfHref}" target="_blank" rel="noopener" title="PDF 열기">
+          ${icon("file")}
+          PDF
+        </a>
+        <a class="icon-button" href="${escapeHtml(paper.source)}" target="_blank" rel="noopener" title="OpenReview 열기">
+          ${icon("external")}
+          OpenReview
+        </a>
+        <button class="icon-button" type="button" data-action="copy" data-id="${escapeHtml(paper.id)}" title="브리프 복사">
+          ${icon("copy")}
+          Copy
+        </button>
+        ${isFlash ? '<span class="copy-flash">Copied</span>' : ""}
+      </div>
+    `;
+  }
+
+  function tagList(paper) {
+    return `
+      <div class="tag-list">
+        ${paper.tags.map((tag) => `<span class="tag">${escapeHtml(tag)}</span>`).join("")}
+      </div>
+    `;
+  }
+
+  function leadTemplate(paper) {
+    if (!paper) {
+      return "";
+    }
+
+    return `
+      <article class="lead-card priority-${escapeHtml(paper.priority)}" data-id="${escapeHtml(paper.id)}">
+        <div class="story-kicker">
+          <span>${escapeHtml(storyLabel(paper))}</span>
+          <span>#${escapeHtml(paper.id)}</span>
+        </div>
+        <h3>${escapeHtml(paper.title)}</h3>
+        <p class="dek">${escapeHtml(paper.summary)}</p>
+        <div class="byline">
+          <span>${escapeHtml(authorsLine(paper.authors))}</span>
+          <span>${escapeHtml(paper.session)} / ${escapeHtml(paper.slot)}</span>
+        </div>
+        <div class="story-columns">
+          <section>
+            <p class="mini-heading">Why It Matters</p>
+            <ul class="takeaways">
+              ${paper.takeaways.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}
+            </ul>
+          </section>
+          <section>
+            <p class="mini-heading">Question to Watch</p>
+            <p class="question">${escapeHtml(paper.question)}</p>
+            ${tagList(paper)}
+          </section>
+        </div>
+        ${linkActions(paper)}
+      </article>
+    `;
+  }
+
+  function cardTemplate(paper) {
+    return `
+      <article class="paper-card priority-${escapeHtml(paper.priority)}" data-id="${escapeHtml(paper.id)}">
+        <div class="card-top">
+          <span class="story-type">${escapeHtml(storyLabel(paper))}</span>
+          <span class="paper-id">#${escapeHtml(paper.id)}</span>
+        </div>
+        <h3>${escapeHtml(paper.title)}</h3>
+        <div class="paper-meta">
+          <span>${escapeHtml(paper.session)}</span>
+          <span>${escapeHtml(paper.slot)}</span>
+          <span>${escapeHtml(authorsLine(paper.authors))}</span>
+        </div>
+        <p class="summary">${escapeHtml(paper.summary)}</p>
+        <p class="mini-heading">Key Read</p>
+        <ul class="takeaways compact">
+          ${paper.takeaways.slice(0, 2).map((item) => `<li>${escapeHtml(item)}</li>`).join("")}
+        </ul>
+        <p class="mini-heading">Watch</p>
+        <p class="question">${escapeHtml(paper.question)}</p>
+        ${tagList(paper)}
+        ${linkActions(paper)}
+      </article>
+    `;
+  }
+
   function renderStats(allPapers, visiblePapers) {
+    const topicCount = unique(allPapers.flatMap((paper) => paper.tags || [])).length;
+
     els.statTotal.textContent = String(allPapers.length);
-    els.statHigh.textContent = String(allPapers.filter((paper) => paper.priority === "high").length);
-    els.statNotes.textContent = String(allPapers.filter((paper) => paper.note.trim()).length);
+    els.statOral.textContent = String(allPapers.filter((paper) => paper.presentation.toLowerCase() === "oral").length);
+    els.statTopics.textContent = String(topicCount);
     els.visibleCount.textContent = `${visiblePapers.length} shown`;
   }
 
@@ -254,7 +252,7 @@
     const active = [];
     if (state.query.trim()) active.push(`검색: ${state.query.trim()}`);
     if (state.session !== "all") active.push(state.session);
-    if (state.priority !== "all") active.push(`우선순위 ${labels.priority[state.priority]}`);
+    if (state.priority !== "all") active.push(labels.priority[state.priority]);
     if (state.tag !== "all") active.push(`#${state.tag}`);
 
     els.activeFilters.innerHTML = active.map((item) => `<span class="filter-pill">${escapeHtml(item)}</span>`).join("");
@@ -264,9 +262,9 @@
     const sessionMap = new Map();
     allPapers.forEach((paper) => {
       const key = `${paper.session}|${paper.slot}`;
-      const entry = sessionMap.get(key) || { session: paper.session, slot: paper.slot, count: 0, high: 0 };
+      const entry = sessionMap.get(key) || { session: paper.session, slot: paper.slot, count: 0, lead: 0 };
       entry.count += 1;
-      if (paper.priority === "high") entry.high += 1;
+      if (paper.priority === "high") entry.lead += 1;
       sessionMap.set(key, entry);
     });
 
@@ -277,7 +275,7 @@
           <div class="queue-row">
             <div>
               <strong>${escapeHtml(entry.session)}</strong>
-              <small>${escapeHtml(entry.slot)} · high ${entry.high}</small>
+              <small>${escapeHtml(entry.slot)} / lead ${entry.lead}</small>
             </div>
             <span>${entry.count}</span>
           </div>
@@ -308,30 +306,23 @@
   }
 
   function paperMarkdown(paper) {
-    const lines = [
+    return [
       `### ${paper.title}`,
       "",
       `- ID: ${paper.id}`,
+      `- Format: ${storyLabel(paper)}`,
       `- Session: ${paper.session} / ${paper.slot}`,
-      `- Priority: ${labels.priority[paper.priority]}`,
-      `- Status: ${labels.status[paper.status]}`,
       `- PDF: ${paper.pdf}`,
       `- OpenReview: ${paper.source}`,
-      `- Tags: ${paper.tags.join(", ")}`,
+      `- Topics: ${paper.tags.join(", ")}`,
       "",
       `Summary: ${paper.summary}`,
       "",
-      "Takeaways:",
+      "Why it matters:",
       ...paper.takeaways.map((item) => `- ${item}`),
       "",
-      `Question: ${paper.question}`,
-    ];
-
-    if (paper.note.trim()) {
-      lines.push("", `Note: ${paper.note.trim()}`);
-    }
-
-    return lines.join("\n");
+      `Question to watch: ${paper.question}`,
+    ].join("\n");
   }
 
   async function writeClipboard(text) {
@@ -352,7 +343,7 @@
   }
 
   async function copyPaper(id) {
-    const paper = effectivePaper(papers.find((item) => item.id === id));
+    const paper = papers.find((item) => item.id === id);
     if (!paper) return;
 
     await writeClipboard(paperMarkdown(paper));
@@ -364,38 +355,18 @@
     }, 1300);
   }
 
-  function exportNotes() {
-    const allPapers = papers.map(effectivePaper);
-    const body = [
-      "# ICLR 2026 Paper Field Notes",
-      "",
-      `Updated: ${new Date().toISOString().slice(0, 10)}`,
-      "",
-      ...allPapers.map(paperMarkdown),
-    ].join("\n\n");
-
-    const blob = new Blob([body], { type: "text/markdown;charset=utf-8" });
-    const url = URL.createObjectURL(blob);
-    const anchor = document.createElement("a");
-    anchor.href = url;
-    anchor.download = "iclr-2026-paper-notes.md";
-    document.body.append(anchor);
-    anchor.click();
-    anchor.remove();
-    URL.revokeObjectURL(url);
-  }
-
   function render() {
-    const allPapers = papers.map(effectivePaper);
-    const visible = sortPapers(allPapers.filter(matches));
+    const visible = sortPapers(papers.filter(matches));
+    const [lead, ...briefs] = visible;
 
     renderFilterControls();
-    renderStats(allPapers, visible);
+    renderStats(papers, visible);
     renderActiveFilters();
-    renderQueue(allPapers);
-    renderTopicChart(allPapers);
+    renderQueue(papers);
+    renderTopicChart(papers);
 
-    els.paperGrid.innerHTML = visible.map(cardTemplate).join("");
+    els.leadStory.innerHTML = leadTemplate(lead);
+    els.paperGrid.innerHTML = briefs.map(cardTemplate).join("");
     els.emptyState.hidden = visible.length > 0;
   }
 
@@ -423,36 +394,16 @@
     }
   });
 
-  document.addEventListener("input", (event) => {
-    const target = event.target;
-    if (!(target instanceof HTMLTextAreaElement) || target.dataset.action !== "note") {
-      return;
-    }
-    saved[target.dataset.id] = { ...(saved[target.dataset.id] || {}), note: target.value };
-    persist();
-    renderStats(papers.map(effectivePaper), sortPapers(papers.map(effectivePaper).filter(matches)));
-  });
-
-  document.addEventListener("change", (event) => {
-    const target = event.target;
-    if (!(target instanceof HTMLSelectElement) || !target.dataset.action) {
-      return;
-    }
-    updateSaved(target.dataset.id, { [target.dataset.action]: target.value });
-  });
-
   els.resetButton.addEventListener("click", () => {
     state.query = "";
     state.session = "all";
     state.priority = "all";
     state.tag = "all";
-    state.sort = "priority";
+    state.sort = "feature";
     els.searchInput.value = "";
-    els.sortSelect.value = "priority";
+    els.sortSelect.value = "feature";
     render();
   });
-
-  els.exportButton.addEventListener("click", exportNotes);
 
   render();
 })();

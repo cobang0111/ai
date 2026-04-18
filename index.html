@@ -3,38 +3,67 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>ICLR 2026 Paper Field Notes</title>
+    <title>ICLR 2026 Paper Digest</title>
     <meta
       name="description"
-      content="ICLR 2026 관심 논문 요약, PDF 링크, 현장 노트를 정리하는 GitHub Pages용 정적 웹페이지"
+      content="ICLR 2026에서 살펴볼 논문을 기사형 브리프와 토픽별 큐레이션으로 정리한 정적 웹페이지"
     >
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
     <header class="site-header">
-      <div class="header-main">
-        <p class="eyebrow">ICLR 2026 / Field Notes</p>
-        <h1>관심 논문 대시보드</h1>
-        <p class="lead">요약, PDF, OpenReview 링크, 현장 메모를 한 화면에서 정리합니다.</p>
+      <div class="masthead">
+        <p class="eyebrow">ICLR 2026 Paper Digest</p>
+        <h1>Memory, Reasoning, and Alignment Briefs</h1>
+        <p class="lead">
+          ICLR 2026에서 눈여겨볼 논문을 짧은 기사처럼 읽을 수 있도록 요약했습니다.
+          각 브리프는 핵심 주장, 살펴볼 포인트, 세션 정보와 원문 링크를 함께 묶습니다.
+        </p>
       </div>
-      <div class="header-stats" aria-label="논문 통계">
-        <div class="stat">
+
+      <div class="issue-strip" aria-label="Digest overview">
+        <div class="issue-item">
           <span id="statTotal">0</span>
-          <small>papers</small>
+          <small>briefs</small>
         </div>
-        <div class="stat accent">
-          <span id="statHigh">0</span>
-          <small>high</small>
+        <div class="issue-item accent">
+          <span id="statOral">0</span>
+          <small>oral papers</small>
         </div>
-        <div class="stat">
-          <span id="statNotes">0</span>
-          <small>notes</small>
+        <div class="issue-item">
+          <span id="statTopics">0</span>
+          <small>topics</small>
         </div>
       </div>
     </header>
 
     <main class="layout">
-      <aside class="sidebar" aria-label="필터와 요약">
+      <section class="content" aria-label="Paper briefs">
+        <section class="lead-section" aria-labelledby="leadTitle">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Lead Story</p>
+              <h2 id="leadTitle">오늘의 헤드라인</h2>
+            </div>
+            <div id="activeFilters" class="active-filters" aria-live="polite"></div>
+          </div>
+          <div id="leadStory"></div>
+        </section>
+
+        <section class="brief-section" aria-labelledby="briefTitle">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Research Briefs</p>
+              <h2 id="briefTitle">논문 브리프</h2>
+            </div>
+            <span id="visibleCount" class="visible-count">0 shown</span>
+          </div>
+          <div id="paperGrid" class="paper-grid"></div>
+          <p id="emptyState" class="empty-state" hidden>조건에 맞는 브리프가 없습니다.</p>
+        </section>
+      </section>
+
+      <aside class="sidebar" aria-label="Filters and indexes">
         <section class="panel controls-panel">
           <div class="search-wrap">
             <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -45,9 +74,9 @@
 
           <label class="select-label" for="sortSelect">정렬</label>
           <select id="sortSelect">
-            <option value="priority">우선순위</option>
-            <option value="session">세션</option>
-            <option value="title">제목</option>
+            <option value="feature">에디터 추천</option>
+            <option value="session">세션 순</option>
+            <option value="title">제목 순</option>
           </select>
 
           <div class="filter-group">
@@ -56,65 +85,43 @@
           </div>
 
           <div class="filter-group">
-            <p>우선순위</p>
-            <div id="priorityFilters" class="segmented" role="group" aria-label="우선순위 필터"></div>
+            <p>커버리지</p>
+            <div id="priorityFilters" class="segmented" role="group" aria-label="커버리지 필터"></div>
           </div>
 
           <div class="filter-group">
-            <p>태그</p>
-            <div id="tagFilters" class="tag-cloud" aria-label="태그 필터"></div>
+            <p>토픽</p>
+            <div id="tagFilters" class="tag-cloud" aria-label="토픽 필터"></div>
           </div>
 
-          <div class="toolbar">
-            <button id="resetButton" class="icon-button" type="button" title="필터 초기화">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M4 4v6h6M20 20v-6h-6"></path>
-                <path d="M5.1 15A8 8 0 0 0 18 18.5M18.9 9A8 8 0 0 0 6 5.5"></path>
-              </svg>
-              초기화
-            </button>
-            <button id="exportButton" class="icon-button primary" type="button" title="마크다운으로 내보내기">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M12 3v12m0 0 4-4m-4 4-4-4"></path>
-                <path d="M5 19h14"></path>
-              </svg>
-              내보내기
-            </button>
-          </div>
+          <button id="resetButton" class="icon-button reset-button" type="button" title="필터 초기화">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4 4v6h6M20 20v-6h-6"></path>
+              <path d="M5.1 15A8 8 0 0 0 18 18.5M18.9 9A8 8 0 0 0 6 5.5"></path>
+            </svg>
+            초기화
+          </button>
         </section>
 
         <section class="panel">
           <div class="panel-heading">
-            <h2>세션 큐</h2>
-            <span id="visibleCount">0 shown</span>
+            <h2>세션 인덱스</h2>
           </div>
           <div id="sessionQueue" class="session-queue"></div>
         </section>
 
         <section class="panel">
           <div class="panel-heading">
-            <h2>토픽 밀도</h2>
+            <h2>토픽 시그널</h2>
           </div>
           <div id="topicChart" class="topic-chart"></div>
         </section>
       </aside>
-
-      <section class="content" aria-label="논문 목록">
-        <div class="content-head">
-          <div>
-            <p class="eyebrow">Selected Papers</p>
-            <h2>읽을 논문</h2>
-          </div>
-          <div id="activeFilters" class="active-filters" aria-live="polite"></div>
-        </div>
-        <div id="paperGrid" class="paper-grid"></div>
-        <p id="emptyState" class="empty-state" hidden>조건에 맞는 논문이 없습니다.</p>
-      </section>
     </main>
 
     <footer class="site-footer">
-      <span>Static GitHub Pages site</span>
-      <span>Notes are saved in this browser.</span>
+      <span>Unofficial ICLR 2026 paper digest</span>
+      <span>Source links point to OpenReview and local PDF copies.</span>
     </footer>
 
     <script src="papers.js"></script>

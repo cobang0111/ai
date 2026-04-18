@@ -1,7 +1,7 @@
 window.ICLR_META = {
-  title: "ICLR 2026 Paper Field Notes",
+  title: "ICLR 2026 Paper Digest",
   updated: "2026-04-18",
-  note: "Summaries are short Korean notes based on OpenReview/ICLR metadata and local PDFs.",
+  note: "Short article-style Korean briefs based on OpenReview/ICLR metadata and local PDFs.",
 };
 
 window.ICLR_PAPERS = [

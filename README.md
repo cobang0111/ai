@@ -1,8 +1,8 @@
-# ICLR 2026 Paper Notes
+# ICLR 2026 Paper Digest
 
-Personal notes and short summaries for papers I want to revisit during ICLR 2026.
+An unofficial static digest for selected ICLR 2026 papers.
 
-This repository contains a small static website for browsing paper notes, tags, links, and local PDF references. It is intended as a lightweight conference reading list rather than an official ICLR resource.
+The page presents short article-style briefs with paper summaries, session details, topic tags, OpenReview links, and local PDF references.
 
 ## Website
 
