@@ -1,127 +1,183 @@
 <!doctype html>
-<html lang="ko">
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>ICLR 2026 Paper Digest</title>
+    <title>AI Automation Project</title>
     <meta
       name="description"
-      content="ICLR 2026에서 살펴볼 논문을 기사형 브리프와 토픽별 큐레이션으로 정리한 정적 웹페이지"
+      content="A modern AI automation workspace for paper collections, generated briefs, and research workflows."
     >
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
-    <header class="site-header">
-      <div class="masthead">
-        <p class="eyebrow">ICLR 2026 Paper Digest</p>
-        <h1>Memory, Reasoning, and Alignment Briefs</h1>
-        <p class="lead">
-          ICLR 2026에서 눈여겨볼 논문을 짧은 기사처럼 읽을 수 있도록 요약했습니다.
-          각 브리프는 핵심 주장, 살펴볼 포인트, 세션 정보와 원문 링크를 함께 묶습니다.
-        </p>
-      </div>
+    <canvas id="networkCanvas" class="network-canvas" aria-hidden="true"></canvas>
 
-      <div class="issue-strip" aria-label="Digest overview">
-        <div class="issue-item">
-          <span id="statTotal">0</span>
-          <small>briefs</small>
+    <header class="site-header">
+      <nav class="topbar" aria-label="Primary">
+        <a class="brand" href="#home" aria-label="AI Automation Project home">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span>AI Automation Project</span>
+        </a>
+        <div class="topbar-actions">
+          <a class="topbar-link" href="#home">Home</a>
+          <a class="topbar-link" href="#papers">Papers</a>
+          <span id="statUpdated" class="topbar-meta">Updated</span>
         </div>
-        <div class="issue-item accent">
-          <span id="statOral">0</span>
-          <small>oral papers</small>
-        </div>
-        <div class="issue-item">
-          <span id="statTopics">0</span>
-          <small>topics</small>
-        </div>
-      </div>
+      </nav>
     </header>
 
-    <main class="layout">
-      <section class="content" aria-label="Paper briefs">
-        <section class="lead-section" aria-labelledby="leadTitle">
-          <div class="section-heading">
-            <div>
-              <p class="eyebrow">Lead Story</p>
-              <h2 id="leadTitle">오늘의 헤드라인</h2>
-            </div>
-            <div id="activeFilters" class="active-filters" aria-live="polite"></div>
+    <main id="homeView" class="home-view">
+      <section class="home-hero" aria-labelledby="heroTitle">
+        <div class="hero-copy">
+          <p class="eyebrow">Automation Workspace</p>
+          <h1 id="heroTitle">Build a research system that reads with you.</h1>
+          <p class="lead">
+            A personal AI automation hub for collecting papers, generating structured briefs, and turning research files into navigable knowledge.
+          </p>
+          <div class="hero-actions">
+            <a class="hero-button primary" href="#papers">Open Papers</a>
+            <a class="hero-button" href="docs/LIBRARY_WORKFLOW.md">Ingestion Workflow</a>
           </div>
-          <div id="leadStory"></div>
-        </section>
+        </div>
 
-        <section class="brief-section" aria-labelledby="briefTitle">
-          <div class="section-heading">
-            <div>
-              <p class="eyebrow">Research Briefs</p>
-              <h2 id="briefTitle">논문 브리프</h2>
-            </div>
-            <span id="visibleCount" class="visible-count">0 shown</span>
+        <div class="hero-stats" aria-label="Workspace overview">
+          <div class="stat-tile">
+            <span id="statTotal">0</span>
+            <small>Papers</small>
           </div>
-          <div id="paperGrid" class="paper-grid"></div>
-          <p id="emptyState" class="empty-state" hidden>조건에 맞는 브리프가 없습니다.</p>
-        </section>
+          <div class="stat-tile accent">
+            <span id="statCollections">0</span>
+            <small>Collections</small>
+          </div>
+          <div class="stat-tile">
+            <span id="statTopics">0</span>
+            <small>Topics</small>
+          </div>
+        </div>
       </section>
 
-      <aside class="sidebar" aria-label="Filters and indexes">
+      <section class="home-grid" aria-label="Project modules">
+        <article class="module-card">
+          <p class="eyebrow">Module 01</p>
+          <h2>Papers</h2>
+          <p>Browse conference collections, open paper cards, and inspect detailed reading briefs.</p>
+          <a href="#papers">Enter module</a>
+        </article>
+        <article class="module-card">
+          <p class="eyebrow">Module 02</p>
+          <h2>Summaries</h2>
+          <p>Use the local ingestion script to turn PDFs into structured entries ready for publishing.</p>
+          <a href="docs/LIBRARY_WORKFLOW.md">View workflow</a>
+        </article>
+        <article class="module-card">
+          <p class="eyebrow">Module 03</p>
+          <h2>Collections</h2>
+          <p>Start with ICLR 2026 and NeurIPS 2025, then keep adding venues as the archive grows.</p>
+          <a href="#papers">Browse collections</a>
+        </article>
+      </section>
+    </main>
+
+    <main id="papersView" class="library-layout is-hidden">
+      <aside class="sidebar" aria-label="Paper controls">
+        <section class="panel nav-panel">
+          <p class="panel-label">Project</p>
+          <a class="nav-button" href="#home">
+            <span class="nav-dot" aria-hidden="true"></span>
+            Home
+          </a>
+          <a class="nav-button is-active" href="#papers" aria-current="page">
+            <span class="nav-dot" aria-hidden="true"></span>
+            Papers
+          </a>
+        </section>
+
         <section class="panel controls-panel">
           <div class="search-wrap">
             <svg viewBox="0 0 24 24" aria-hidden="true">
               <path d="m21 21-4.35-4.35M10.5 18a7.5 7.5 0 1 1 0-15 7.5 7.5 0 0 1 0 15Z"></path>
             </svg>
-            <input id="searchInput" type="search" placeholder="제목, 저자, 태그 검색">
+            <input id="searchInput" type="search" placeholder="Search title, author, topic">
           </div>
 
-          <label class="select-label" for="sortSelect">정렬</label>
+          <label class="select-label" for="sortSelect">Sort</label>
           <select id="sortSelect">
-            <option value="feature">에디터 추천</option>
-            <option value="session">세션 순</option>
-            <option value="title">제목 순</option>
+            <option value="featured">Featured</option>
+            <option value="session">Session</option>
+            <option value="title">Title</option>
           </select>
 
           <div class="filter-group">
-            <p>세션</p>
-            <div id="sessionFilters" class="segmented" role="group" aria-label="세션 필터"></div>
+            <p>Collections</p>
+            <div id="collectionFilters" class="collection-switcher" role="group" aria-label="Paper collection filter"></div>
           </div>
 
           <div class="filter-group">
-            <p>커버리지</p>
-            <div id="priorityFilters" class="segmented" role="group" aria-label="커버리지 필터"></div>
+            <p>Coverage</p>
+            <div id="priorityFilters" class="segmented" role="group" aria-label="Coverage filter"></div>
           </div>
 
           <div class="filter-group">
-            <p>토픽</p>
-            <div id="tagFilters" class="tag-cloud" aria-label="토픽 필터"></div>
+            <p>Topics</p>
+            <div id="tagFilters" class="tag-cloud" aria-label="Topic filter"></div>
           </div>
 
-          <button id="resetButton" class="icon-button reset-button" type="button" title="필터 초기화">
+          <button id="resetButton" class="icon-button reset-button" type="button" title="Reset filters">
             <svg viewBox="0 0 24 24" aria-hidden="true">
               <path d="M4 4v6h6M20 20v-6h-6"></path>
               <path d="M5.1 15A8 8 0 0 0 18 18.5M18.9 9A8 8 0 0 0 6 5.5"></path>
             </svg>
-            초기화
+            Reset
           </button>
         </section>
 
         <section class="panel">
           <div class="panel-heading">
-            <h2>세션 인덱스</h2>
+            <h2>Sessions</h2>
           </div>
-          <div id="sessionQueue" class="session-queue"></div>
+          <div id="sessionQueue" class="session-list"></div>
         </section>
 
         <section class="panel">
           <div class="panel-heading">
-            <h2>토픽 시그널</h2>
+            <h2>Topic Signals</h2>
           </div>
           <div id="topicChart" class="topic-chart"></div>
         </section>
       </aside>
+
+      <section class="content" aria-label="Paper collections">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Papers</p>
+            <h2 id="collectionTitle">ICLR 2026</h2>
+          </div>
+          <div id="activeFilters" class="active-filters" aria-live="polite"></div>
+        </div>
+
+        <div id="collectionDeck" class="collection-deck"></div>
+
+        <div class="section-heading library-heading">
+          <div>
+            <p class="eyebrow">Cards</p>
+            <h2>Reading Queue</h2>
+          </div>
+          <span id="visibleCount" class="visible-count">0 shown</span>
+        </div>
+
+        <div id="paperGrid" class="paper-grid"></div>
+        <p id="emptyState" class="empty-state" hidden>No papers match the current filters.</p>
+      </section>
+    </main>
+
+    <main id="paperDetailView" class="paper-detail-view is-hidden">
+      <div id="paperDetailContent"></div>
     </main>
 
     <footer class="site-footer">
-      <span>Unofficial ICLR 2026 paper digest</span>
-      <span>Source links point to OpenReview and local PDF copies.</span>
+      <span>AI Automation Project</span>
+      <span>Static site, PDF archive, summary-ready data model</span>
     </footer>
 
     <script src="papers.js"></script>

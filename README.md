@@ -1,8 +1,8 @@
-# ICLR 2026 Paper Digest
+# AI Automation Project
 
-An unofficial static digest for selected ICLR 2026 papers.
+An unofficial static AI automation workspace for selected papers, PDFs, and generated reading briefs.
 
-The page presents short article-style briefs with paper summaries, session details, topic tags, OpenReview links, and local PDF references.
+The first collections focus on ICLR 2026 and NeurIPS 2025, but the data model is intended to grow into a broader research automation archive.
 
 ## Website
 
@@ -14,3 +14,7 @@ The site is built with plain HTML, CSS, and JavaScript:
 - `app.js`
 
 It can be hosted with GitHub Pages from the repository root.
+
+## Add Papers
+
+PDF ingestion helpers live in `tools/add_paper.py`. See `docs/LIBRARY_WORKFLOW.md` for the workflow.
