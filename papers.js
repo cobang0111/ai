@@ -28,7 +28,7 @@ window.ICLR_PAPERS = [
     presentation: "Oral",
     priority: "high",
     status: "todo",
-    pdf: "Poster Session 1 (24th 1030-1300)/11163_MemAgent_Reshaping_Long_.pdf",
+    pdf: "papers/ICLR2026/Oral Session 1 (24th 1030-1200)/11163_MemAgent_Reshaping_Long_.pdf",
     source: "https://openreview.net/forum?id=k5nIOvYGCL",
     tags: ["LLM", "memory", "long-context", "agent", "RL"],
     summary:
@@ -49,7 +49,7 @@ window.ICLR_PAPERS = [
     presentation: "Poster",
     priority: "medium",
     status: "todo",
-    pdf: "Poster Session 1 (24th 1030-1300)/11338_MLP_Memory_A_Retriever_P.pdf",
+    pdf: "papers/ICLR2026/Poster Session 1 (24th 1030-1300)/11338_MLP_Memory_A_Retriever_P.pdf",
     source: "https://openreview.net/forum?id=1SMdxRtLBp",
     tags: ["LLM", "memory", "retrieval", "RAG", "parametric"],
     summary:
@@ -81,7 +81,7 @@ window.ICLR_PAPERS = [
     presentation: "Poster",
     priority: "medium",
     status: "todo",
-    pdf: "Poster Session 1 (24th 1030-1300)/1717_MemoryVLA_Perceptual_Cogn.pdf",
+    pdf: "papers/ICLR2026/Poster Session 1 (24th 1030-1300)/1717_MemoryVLA_Perceptual_Cogn.pdf",
     source: "https://openreview.net/forum?id=54U3XHf7qq",
     tags: ["robotics", "VLA", "memory", "long-horizon", "embodied AI"],
     summary:
@@ -103,7 +103,7 @@ window.ICLR_PAPERS = [
     presentation: "Oral",
     priority: "high",
     status: "todo",
-    pdf: "Poster Session 1 (24th 1030-1300)/18334_RAIN_Merging_A_Gradient_.pdf",
+    pdf: "papers/ICLR2026/Oral Session 1 (24th 1030-1200)/18334_RAIN_Merging_A_Gradient_.pdf",
     source: "https://openreview.net/forum?id=PO2iULmu5e",
     tags: ["LLM", "reasoning", "instruction following", "model merging", "alignment"],
     summary:
@@ -124,7 +124,7 @@ window.ICLR_PAPERS = [
     presentation: "Poster",
     priority: "medium",
     status: "todo",
-    pdf: "Poster Session 1 (24th 1030-1300)/1991_Steerable_Adversarial_Sce.pdf",
+    pdf: "papers/ICLR2026/Poster Session 1 (24th 1030-1300)/1991_Steerable_Adversarial_Sce.pdf",
     source: "https://openreview.net/forum?id=lYNsZdKn5R",
     tags: ["autonomous driving", "adversarial", "preference alignment", "planning", "safety"],
     summary:
@@ -145,7 +145,7 @@ window.ICLR_PAPERS = [
     presentation: "Poster",
     priority: "medium",
     status: "todo",
-    pdf: "Poster Session 1 (24th 1030-1300)/23970_PALC_Preference_Alignmen.pdf",
+    pdf: "papers/ICLR2026/Poster Session 1 (24th 1030-1300)/23970_PALC_Preference_Alignmen.pdf",
     source: "https://openreview.net/forum?id=0cmuYj3WeG",
     tags: ["alignment", "logits", "test-time", "LLM", "steering"],
     summary:
@@ -166,7 +166,7 @@ window.ICLR_PAPERS = [
     presentation: "Poster",
     priority: "medium",
     status: "todo",
-    pdf: "Poster Session 1 (24th 1030-1300)/24355_PERK_Long_Context_Reason.pdf",
+    pdf: "papers/ICLR2026/Poster Session 1 (24th 1030-1300)/24355_PERK_Long_Context_Reason.pdf",
     source: "https://openreview.net/forum?id=qxDTe8fIyA",
     tags: ["LLM", "long-context", "test-time learning", "LoRA", "meta-learning"],
     summary:
@@ -187,7 +187,7 @@ window.ICLR_PAPERS = [
     presentation: "Poster",
     priority: "medium",
     status: "todo",
-    pdf: "Poster Session 1 (24th 1030-1300)/6247_TokMem_One_Token_Procedur.pdf",
+    pdf: "papers/ICLR2026/Poster Session 1 (24th 1030-1300)/6247_TokMem_One_Token_Procedur.pdf",
     source: "https://openreview.net/forum?id=RWjEf9PdiJ",
     tags: ["LLM", "procedural memory", "tokens", "continual adaptation", "prompting"],
     summary:
@@ -221,7 +221,7 @@ window.ICLR_PAPERS = [
     presentation: "Poster",
     priority: "medium",
     status: "todo",
-    pdf: "Poster Session 1 (24th 1030-1300)/746_VerifyBench_Benchmarking_R.pdf",
+    pdf: "papers/ICLR2026/Poster Session 1 (24th 1030-1300)/746_VerifyBench_Benchmarking_R.pdf",
     source: "https://openreview.net/forum?id=JfsjGmuFxz",
     tags: ["benchmark", "reward model", "verification", "RL", "reasoning"],
     summary:
@@ -242,7 +242,7 @@ window.ICLR_PAPERS = [
     presentation: "Poster",
     priority: "medium",
     status: "todo",
-    pdf: "Poster Session 1 (24th 1030-1300)/8572_Think_While_Generating_On.pdf",
+    pdf: "papers/ICLR2026/Poster Session 1 (24th 1030-1300)/8572_Think_While_Generating_On.pdf",
     source: "https://openreview.net/forum?id=lle0aGQyQb",
     tags: ["LLM", "personalization", "reasoning", "long-form generation", "alignment"],
     summary:
@@ -253,6 +253,237 @@ window.ICLR_PAPERS = [
       "개인화 품질과 추론 비용 사이 균형을 실제 long-form task에서 볼 필요가 있다.",
     ],
     question: "사용자 선호가 암묵적이거나 모순될 때 latent reasoning이 어떻게 갱신되는가?",
+  },
+  {
+    id: "11330",
+    title: "P-GenRM: Personalized Generative Reward Model with Test-Time User-Based Scaling",
+    authors: ["Pinyi Zhang", "Ting-En Lin", "Yuchuan Wu", "Jingyang Chen", "Zongqi Wang", "Hua Yang", "Ze Xu", "Fei Huang", "Yongbin Li", "Kai Zhang"],
+    session: "Oral Session 2",
+    slot: "24th 15:15-16:45",
+    presentation: "Oral",
+    priority: "high",
+    status: "todo",
+    pdf: "papers/ICLR2026/Oral Session 2 (24th 1515-1645)/11330_P_GenRM_Personalized_Gen.pdf",
+    source: "",
+    tags: ["personalization", "reward model", "alignment"],
+    summary:
+      "개인별 선호를 평가 chain, persona, scoring rubric으로 구조화하고, 개별 사용자와 유사 사용자 prototype을 함께 활용해 test-time reward scaling을 수행하는 personalized generative reward model이다.",
+    takeaways: [
+      "고정된 평가 원칙 대신 사용자와 상황별 평가 rubric을 생성한다.",
+      "user prototype을 통해 feedback이 적은 신규 사용자 일반화를 보강한다.",
+      "test-time user-based scaling이 개인화 alignment 성능을 추가로 끌어올린다.",
+    ],
+    question: "사용자 prototype이 잘못 묶일 때 reward signal의 편향은 어떻게 제어되는가?",
+  },
+  {
+    id: "15818",
+    title: "Reasoning with Sampling: Your Base Model Is Smarter Than You Think",
+    authors: ["Aayush Karan", "Yilun Du"],
+    session: "Oral Session 2",
+    slot: "24th 15:15-16:45",
+    presentation: "Oral",
+    priority: "high",
+    status: "todo",
+    pdf: "papers/ICLR2026/Oral Session 2 (24th 1515-1645)/15818_Reasoning_with_Sampling_.pdf",
+    source: "",
+    tags: ["reasoning", "sampling", "inference"],
+    summary:
+      "RL post-training 없이 base model의 likelihood만 활용하는 iterative sampling으로 reasoning 성능을 끌어내는 방법이다. MCMC에서 영감을 받은 sampling 절차로 학습 없이 여러 reasoning benchmark에서 큰 향상을 보인다.",
+    takeaways: [
+      "base model 내부에 이미 존재하는 reasoning 능력을 inference-time sampling으로 끌어낸다.",
+      "RL post-training이 만드는 diversity collapse를 피하는 점을 강조한다.",
+      "training, curated data, verifier 없이 적용 가능하다는 범용성이 핵심이다.",
+    ],
+    question: "sampling 비용이 커질 때 RL post-training 대비 실제 serving 효율은 어디서 역전되는가?",
+  },
+  {
+    id: "22452",
+    title: "LoongRL: Reinforcement Learning for Advanced Reasoning over Long Contexts",
+    authors: ["Siyuan Wang", "Gaokai Zhang", "Li Lyna Zhang", "Ning Shang", "Fan Yang", "Dongyao Chen", "Mao Yang"],
+    session: "Oral Session 2",
+    slot: "24th 15:15-16:45",
+    presentation: "Oral",
+    priority: "high",
+    status: "todo",
+    pdf: "papers/ICLR2026/Oral Session 2 (24th 1515-1645)/22452_LoongRL_Reinforcement_Le.pdf",
+    source: "https://loongrl.github.io/",
+    tags: ["long-context", "RL", "reasoning"],
+    summary:
+      "짧은 multi-hop QA를 UUID chain이 숨어 있는 고난도 장문맥 과제로 합성하고, RL로 plan-retrieve-reason-recheck 패턴을 유도하는 long-context reasoning 방법이다.",
+    takeaways: [
+      "KeyChain 데이터가 검색만으로 풀 수 없는 장문맥 reasoning task를 만든다.",
+      "16K 학습에서 128K task로 일반화하는 length extrapolation을 강조한다.",
+      "장문맥 retrieval과 reasoning을 하나의 RL 행동 패턴으로 묶는다.",
+    ],
+    question: "KeyChain 합성 난이도가 실제 문서 분석 task의 reasoning 난이도를 충분히 대표하는가?",
+  },
+  {
+    id: "25302",
+    title: "Q-RAG: Long Context Multi-Step Retrieval via Value-Based Embedder Training",
+    authors: ["Artyom Sorokin", "Nazar Buzun", "Alexander Anokhin", "Egor Vedernikov", "Petr Anokhin", "Mikhail Burtsev", "Evgeny Burnaev"],
+    session: "Oral Session 2",
+    slot: "24th 15:15-16:45",
+    presentation: "Oral",
+    priority: "high",
+    status: "todo",
+    pdf: "papers/ICLR2026/Oral Session 2 (24th 1515-1645)/25302_Q_RAG_Long_Context_Multi.pdf",
+    source: "https://github.com/griver/Q-RAG",
+    tags: ["RAG", "retrieval", "long-context"],
+    summary:
+      "복잡한 질문에 필요한 multi-step retrieval을 small LLM fine-tuning 대신 embedder 자체를 RL로 학습해 해결하는 resource-efficient RAG 방법이다.",
+    takeaways: [
+      "multi-step retrieval의 행동을 embedder value learning 문제로 바꾼다.",
+      "LLM retriever fine-tuning보다 비용이 낮고 큰 LLM 사용 제약을 줄인다.",
+      "BabiLong과 RULER 같은 긴 문맥 benchmark에서 강한 성능을 보고한다.",
+    ],
+    question: "embedder에 학습된 retrieval policy가 domain shift나 noisy corpus에서도 안정적으로 작동하는가?",
+  },
+  {
+    id: "6576",
+    title: "Token-Importance Guided Direct Preference Optimization",
+    authors: ["Ning Yang", "Hai Lin", "Yibo Liu", "Baoliang Tian", "Guoqing Liu", "Haijun Zhang"],
+    session: "Oral Session 2",
+    slot: "24th 15:15-16:45",
+    presentation: "Oral",
+    priority: "high",
+    status: "todo",
+    pdf: "papers/ICLR2026/Oral Session 2 (24th 1515-1645)/6576_Token_Importance_Guided_D.pdf",
+    source: "https://github.com/gracefulning/TIDPO",
+    tags: ["DPO", "alignment", "token importance"],
+    summary:
+      "DPO가 sequence-level preference만 다루는 한계를 보완하기 위해, token importance를 gradient attribution과 Gaussian prior로 추정하고 triplet loss로 선호 방향을 구조적으로 안내하는 alignment 방법이다.",
+    takeaways: [
+      "선호 판단에 결정적인 token을 더 정확하고 robust하게 가중한다.",
+      "triplet loss로 preferred response에 가까워지고 rejected response에서 멀어지도록 유도한다.",
+      "DPO 대비 안정성과 생성 다양성 개선을 목표로 한다.",
+    ],
+    question: "token importance가 긴 답변에서 semantic unit보다 표면 token에 과도하게 묶이지 않는가?",
+  },
+  {
+    id: "11059",
+    title: "Rethinking LLM Reasoning: From Explicit Trajectories to Latent Representations",
+    authors: ["Cong Jiang", "Xiaofeng Zhang", "Fangzhi Zhu", "Xiaowei Chen", "Junxiong Zhu", "Zheng Zhang"],
+    session: "Poster Session 2",
+    slot: "24th 15:15-17:45",
+    presentation: "Poster",
+    priority: "medium",
+    status: "todo",
+    pdf: "papers/ICLR2026/Poster Session 2 (24th 1515-1745)/11059_Rethinking_LLM_Reasoning.pdf",
+    source: "https://github.com/MobiusDai/LRT",
+    tags: ["reasoning", "latent representation", "efficiency"],
+    summary:
+      "긴 explicit reasoning trajectory를 매번 생성하는 대신, 경량 reasoning network가 compact latent vectors를 만들고 이를 LLM에 주입해 답을 생성하는 Latent Reasoning Tuning 프레임워크다.",
+    takeaways: [
+      "token-by-token reasoning chain 생성 비용을 latent representation으로 줄인다.",
+      "single forward pass로 필요한 reasoning logic을 압축한다.",
+      "efficient reasoning benchmark에서 기존 압축형 reasoning 방법보다 강한 성능을 보인다.",
+    ],
+    question: "latent reasoning이 해석 가능성과 오류 디버깅 가능성을 얼마나 잃는가?",
+  },
+  {
+    id: "11583",
+    title: "Actions as Language: Fine-Tuning VLMs into VLAs without Catastrophic Forgetting",
+    authors: ["Asher J. Hancock", "Xindi Wu", "Lihan Zha", "Olga Russakovsky", "Anirudha Majumdar"],
+    session: "Poster Session 2",
+    slot: "24th 15:15-17:45",
+    presentation: "Poster",
+    priority: "medium",
+    status: "todo",
+    pdf: "papers/ICLR2026/Poster Session 2 (24th 1515-1745)/11583_Actions_as_Language_Fine.pdf",
+    source: "",
+    tags: ["robotics", "VLA", "LoRA"],
+    summary:
+      "로봇 action을 자연어로 표현해 VLM pretraining distribution과 teleoperation data 사이의 mismatch를 줄이고, LoRA만으로 VLA를 학습해 VLM의 reasoning/multimodal 능력 망각을 완화한다.",
+    takeaways: [
+      "low-level action을 language representation으로 바꿔 데이터 레벨 정렬을 수행한다.",
+      "VLM backbone을 크게 바꾸지 않고 LoRA fine-tuning으로 VLA를 만든다.",
+      "실세계 로봇 실험과 VQA 평가로 generalist capability 보존을 확인한다.",
+    ],
+    question: "action을 언어화할 때 연속 제어의 미세한 동역학 정보가 얼마나 손실되는가?",
+  },
+  {
+    id: "13900",
+    title: "FSPO: Few-Shot Optimization of Synthetic Preferences Personalizes to Real Users",
+    authors: ["Anikait Singh", "Sheryl Hsu", "Kyle Hsu", "Eric Mitchell", "Stefano Ermon", "Tatsunori Hashimoto", "Archit Sharma", "Chelsea Finn"],
+    session: "Poster Session 2",
+    slot: "24th 15:15-17:45",
+    presentation: "Poster",
+    priority: "medium",
+    status: "todo",
+    pdf: "papers/ICLR2026/Poster Session 2 (24th 1515-1745)/13900_FSPO_Few_Shot_Optimizati.pdf",
+    source: "",
+    tags: ["personalization", "few-shot", "preference optimization"],
+    summary:
+      "LLM 개인화를 reward modeling의 meta-learning 문제로 재구성해, 소수의 labeled preferences만으로 사용자별 reward function을 빠르게 추론하는 FSPO 방법이다.",
+    takeaways: [
+      "few-shot preference examples로 개인화 reward를 in-context 추론한다.",
+      "synthetic personalized preference data를 대규모로 만들되 다양성과 자기일관성을 중요 조건으로 둔다.",
+      "실제 사용자 연구에서도 개인화 응답 win-rate 개선을 보고한다.",
+    ],
+    question: "synthetic preference에서 학습한 사용자 구조가 실제 사용자 다양성을 얼마나 충실히 반영하는가?",
+  },
+  {
+    id: "18279",
+    title: "RPM: Reasoning-Level Personalization for Black-Box Large Language Models",
+    authors: ["Jieyong Kim", "Tongyoung Kim", "Soojin Yoon", "Jaehyung Kim", "Dongha Lee"],
+    session: "Poster Session 2",
+    slot: "24th 15:15-17:45",
+    presentation: "Poster",
+    priority: "medium",
+    status: "todo",
+    pdf: "papers/ICLR2026/Poster Session 2 (24th 1515-1745)/18279_RPM_Reasoning_Level_Pers.pdf",
+    source: "https://github.com/jieyong99/RPM",
+    tags: ["personalization", "black-box LLM", "reasoning"],
+    summary:
+      "최종 응답만 맞추는 response-level personalization을 넘어, 사용자 행동 데이터에서 reasoning structure를 자동 발견하고 이를 black-box LLM inference에 활용하는 reasoning-level personalization 프레임워크다.",
+    takeaways: [
+      "사용자별 response-influential feature와 statistical factor를 구조화한다.",
+      "개인화 reasoning path와 beneficial examples를 검색해 inference를 안내한다.",
+      "개인화 성능과 해석 가능성을 동시에 높이는 방향을 제시한다.",
+    ],
+    question: "추론 경로가 사용자 선호를 설명하는지, 단순 correlation을 재포장하는지 어떻게 검증하는가?",
+  },
+  {
+    id: "22311",
+    title: "PAMDP: Interact to Persona Alignment via a Partially Observable Markov Decision Process",
+    authors: ["Zhe Yang", "Yi Huang", "Si Chen", "Xiaoting Wu", "Jingyu Yao", "Junlan Feng"],
+    session: "Poster Session 2",
+    slot: "24th 15:15-17:45",
+    presentation: "Poster",
+    priority: "medium",
+    status: "todo",
+    pdf: "papers/ICLR2026/Poster Session 2 (24th 1515-1745)/22311_PAMDP_Interact_to_Person.pdf",
+    source: "",
+    tags: ["persona alignment", "POMDP", "RL"],
+    summary:
+      "사용자 persona가 대화 중 동적으로 변하지만 assistant에게는 직접 관측되지 않는다는 관점에서 persona alignment를 POMDP로 정식화하고, latent action을 쓰는 dual-critic RL 프레임워크를 제안한다.",
+    takeaways: [
+      "개인화 alignment를 단발 응답이 아니라 interaction process로 본다.",
+      "사용자 profile을 unobservable state로 두어 부분관측 의사결정 문제로 정식화한다.",
+      "offline dataset과 online simulator에서 persona alignment 개선을 평가한다.",
+    ],
+    question: "POMDP의 latent user profile이 실제 대화에서 얼마나 빠르고 안정적으로 식별되는가?",
+  },
+  {
+    id: "8006",
+    title: "Guided Speculative Inference for Efficient Test-Time Alignment of LLMs",
+    authors: ["Jonathan Geuter", "Youssef Mroueh", "David Alvarez-Melis"],
+    session: "Poster Session 2",
+    slot: "24th 15:15-17:45",
+    presentation: "Poster",
+    priority: "medium",
+    status: "todo",
+    pdf: "papers/ICLR2026/Poster Session 2 (24th 1515-1745)/8006_Guided_Speculative_Infere.pdf",
+    source: "",
+    tags: ["test-time alignment", "speculative decoding", "reward model"],
+    summary:
+      "작은 auxiliary model의 speculative samples와 reward model을 결합해 soft best-of-n의 reward-guided decoding을 더 빠르게 근사하는 Guided Speculative Inference 방법이다.",
+    takeaways: [
+      "base model의 reward-tilted policy와 expected reward를 근사하는 이론적 틀을 제시한다.",
+      "작은 모델 샘플을 활용해 reward-guided decoding의 latency를 줄인다.",
+      "reasoning benchmark에서 accuracy와 end-to-end latency 개선을 함께 보고한다.",
+    ],
+    question: "auxiliary model의 분포가 base model과 멀어질 때 reward-guided 근사의 품질은 어떻게 변하는가?",
   },
   {
     id: "neurips2025-any-stepsize-gd",
@@ -455,6 +686,149 @@ window.PAPER_DETAILS = {
       "reasoning model과 generation model을 분리하고, reasoning model이 latent token-level signal을 병렬 생성해 generation 과정에 지속적으로 주입한다.",
     contribution:
       "think-while-generating 패러다임을 제안해 개인화 long-form generation에서 reasoning과 generation의 동시 진행 가능성을 보인다.",
+  },
+  "11330": {
+    keywords: ["Personalization", "Reward Model", "Alignment"],
+    abstractKo:
+      "LLM의 개인화 alignment는 사용자별 선호에 맞게 응답을 조정하려 하지만, open-ended scenario에서 정확한 사용자별 reward signal을 얻는 것이 어렵다. 기존 personalized reward model은 다양한 상황별 선호를 소수의 고정 평가 원칙으로 단순화하거나, feedback이 적은 신규 사용자에게 일반화하기 어렵다. P-GenRM은 선호 신호를 구조화된 evaluation chain으로 변환해 adaptive persona와 scoring rubric을 만들고, 사용자 prototype과 test-time user-based scaling을 통해 개인별 및 유사 사용자 수준의 선호를 함께 반영한다.",
+    problem:
+      "개인화 reward model은 사용자마다 달라지는 상황별 평가 기준을 충분히 표현하지 못하고, feedback이 적은 신규 사용자에게 약하다.",
+    objective:
+      "open-ended generation에서도 사용자별 선호를 더 정확히 평가하고, test time에 scalable하게 조정할 수 있는 generative reward model을 만드는 것이다.",
+    keyIdea:
+      "선호 데이터를 evaluation chain, persona, scoring rubric으로 구조화하고, 개별 사용자 scheme과 user prototype 정보를 dual-granularity로 scaling한다.",
+    contribution:
+      "P-GenRM을 통해 personalized reward modeling을 test-time user-based scaling 문제로 확장하고, 적은 feedback에서도 prototype transfer로 일반화를 개선한다.",
+  },
+  "15818": {
+    keywords: ["Reasoning", "Sampling", "Inference"],
+    abstractKo:
+      "강력한 reasoning model은 주로 RL post-training으로 만들어지지만, RL 과정에서 정말 새로운 행동이 생기는지 아니면 base model에 이미 있던 능력을 끌어내는지에 대한 질문이 남아 있다. 이 논문은 추가 학습 없이 순수 sampling만으로 base model에서 유사한 reasoning 능력을 유도할 수 있는지 살핀다. MCMC에서 영감을 받은 iterative sampling algorithm은 base model의 likelihood를 활용해 sharpened distribution에서 샘플링하며, 여러 reasoning benchmark에서 RL에 근접하거나 능가하는 성능 향상을 보인다.",
+    problem:
+      "RL post-training이 reasoning 성능을 올리지만, 그 능력이 학습으로 새로 생기는지 inference-time 탐색으로도 끌어낼 수 있는지 불분명하다.",
+    objective:
+      "추가 학습, verifier, curated dataset 없이 base model의 내재 reasoning 능력을 sampling만으로 끌어내는 방법을 검증하는 것이다.",
+    keyIdea:
+      "MCMC식 sharpened distribution sampling에서 착안해, base model likelihood를 반복적으로 활용하는 simple iterative sampler를 적용한다.",
+    contribution:
+      "base model이 생각보다 강한 reasoning capability를 이미 갖고 있으며, 순수 inference-time sampling이 RL post-training과 경쟁할 수 있음을 보인다.",
+  },
+  "22452": {
+    keywords: ["Long Context", "RL", "Reasoning"],
+    abstractKo:
+      "장문맥 reasoning은 긴 입력에서 정보를 검색하고 근거를 연결해야 하지만, 기존 RL reasoning 연구는 주로 짧은 문맥과 내부 지식 기반 문제에 집중했다. LoongRL은 short multi-hop QA를 UUID chain이 숨겨진 장문맥 task로 변환하는 KeyChain 합성 방식을 제안한다. 모델은 올바른 chain을 단계적으로 추적하고 진짜 질문과 관련 근거를 찾은 뒤 추론해야 하며, RL 학습을 통해 plan-retrieve-reason-recheck 패턴을 습득해 16K 학습에서 128K task로 일반화한다.",
+    problem:
+      "긴 문맥 task는 단순 retrieval뿐 아니라 관련 근거를 찾아 연결하는 reasoning이 필요하지만, 이를 유도할 고난도 RL 데이터와 학습 패턴이 부족하다.",
+    objective:
+      "장문맥에서 검색과 추론을 함께 수행하는 고급 reasoning pattern을 RL로 학습시키고, 긴 길이로 일반화하게 만드는 것이다.",
+    keyIdea:
+      "KeyChain이 UUID chain을 삽입해 distractor가 많은 장문맥 문제를 만들고, RL이 올바른 chain 추적과 recheck를 포함한 행동 패턴을 학습하게 한다.",
+    contribution:
+      "LoongRL은 장문맥 reasoning을 위한 합성 데이터와 RL training recipe를 제시하며, 긴 문맥 QA와 needle-in-a-haystack stress test에서 큰 개선을 보인다.",
+  },
+  "25302": {
+    keywords: ["RAG", "Multi-Step Retrieval", "Embedder RL"],
+    abstractKo:
+      "RAG는 관련 context만 추려 LLM 입력을 줄이고 hallucination과 비용을 낮추지만, 대부분의 방법은 single-step retrieval에 머물러 복잡한 multi-step question을 풀기에 부족하다. 기존 multi-step retrieval은 small LLM을 fine-tuning하는 경우가 많아 비용이 크고 큰 LLM 활용을 제한한다. Q-RAG는 LLM 대신 embedder model을 RL로 학습해 multi-step retrieval을 수행하며, BabiLong과 RULER에서 10M token 규모의 long-context benchmark 성능을 개선한다.",
+    problem:
+      "복잡한 질문은 여러 단계의 탐색이 필요한데, single-step RAG는 충분하지 않고 LLM 기반 multi-step retriever 학습은 비용이 크다.",
+    objective:
+      "resource-efficient하게 multi-step retrieval을 수행하도록 embedder 자체를 학습해 장문맥 QA 성능을 높이는 것이다.",
+    keyIdea:
+      "retrieval 과정의 상태와 보상을 value-based RL 문제로 보고, embedder가 다음 검색 단계를 더 잘 선택하도록 fine-tuning한다.",
+    contribution:
+      "Q-RAG는 multi-step retrieval을 embedder training으로 옮겨 비용을 줄이고, 매우 긴 context benchmark에서 경쟁력 있는 성능을 제시한다.",
+  },
+  "6576": {
+    keywords: ["DPO", "Token Importance", "Alignment"],
+    abstractKo:
+      "DPO는 preference alignment를 단순화했지만 데이터 noise에 민감하고 각 token의 중요도를 다르게 반영하지 못한다. 기존 token-level 방법은 확률 예측이나 단순 weighting에 의존해 token importance를 충분히 잡지 못한다. TI-DPO는 gradient attribution과 Gaussian prior를 결합한 hybrid weighting으로 token importance를 추정하고, triplet loss를 사용해 preferred response에 가까워지고 non-preferred response에서 멀어지도록 구조적 guidance를 제공한다.",
+    problem:
+      "sequence-level DPO는 선호에 실제로 중요한 token과 그렇지 않은 token을 구분하지 못해 noise와 sampling distribution shift에 취약하다.",
+    objective:
+      "token-level 중요도를 더 정확히 반영해 preference optimization의 안정성, 정확도, 생성 다양성을 높이는 것이다.",
+    keyIdea:
+      "gradient attribution과 Gaussian prior로 robust token weight를 만들고, triplet loss로 preferred/rejected response 사이의 방향성을 명시적으로 학습한다.",
+    contribution:
+      "TI-DPO는 token-importance guided preference optimization을 제안해 DPO류 alignment의 fine-grained semantic control을 강화한다.",
+  },
+  "11059": {
+    keywords: ["Latent Reasoning", "Efficiency", "LLM"],
+    abstractKo:
+      "LLM은 복잡한 문제를 풀 때 step-by-step reasoning trajectory를 생성하지만, 그 길이가 최종 답보다 훨씬 길어 inference cost가 커진다. 이 논문은 완전한 token-by-token reasoning path 없이도 정확한 답을 만들 수 있음을 보이고, explicit textual trajectory 대신 compact learnable latent representation으로 reasoning하는 Latent Reasoning Tuning을 제안한다. 경량 reasoning network가 single forward pass로 latent vectors를 생성해 LLM이 최종 답을 내도록 조건화한다.",
+    problem:
+      "slow-thinking reasoning model은 간단한 문제에서도 긴 reasoning chain을 생성해 latency와 비용이 크게 증가한다.",
+    objective:
+      "명시적 reasoning trajectory 생성 비용을 줄이면서도 reasoning 성능을 유지하거나 개선하는 latent reasoning 방식을 만드는 것이다.",
+    keyIdea:
+      "경량 reasoning network가 질문에서 latent reasoning vectors를 한 번에 만들고, LLM은 이 latent representation을 조건으로 최종 답을 생성한다.",
+    contribution:
+      "LRT는 explicit reasoning을 latent reasoning으로 대체해 효율적 reasoning의 새로운 설계를 제안하고, 여러 benchmark에서 기존 efficient reasoning 방법을 능가한다.",
+  },
+  "11583": {
+    keywords: ["VLA", "Robotics", "LoRA"],
+    abstractKo:
+      "VLM을 robot teleoperation data로 fine-tuning해 VLA model을 만드는 방식은 유망하지만, action prediction을 학습하는 과정에서 VLM의 reasoning과 multimodal understanding 능력이 손상되는 catastrophic forgetting이 발생한다. VLM2VLA는 이 문제가 internet-scale VLM pretraining corpus와 robotics data 사이의 distribution mismatch에서 온다고 보고, low-level action을 자연어로 표현해 데이터 수준에서 mismatch를 줄인다. 그 결과 LoRA만으로 VLA를 학습하면서 VLM backbone의 핵심 능력을 보존한다.",
+    problem:
+      "로봇 action을 직접 학습시키면 VLM의 기존 semantic reasoning, instruction following, multimodal understanding 능력이 망각될 수 있다.",
+    objective:
+      "VLM의 foundation capability를 보존하면서 robot teleoperation data를 이용해 generalist VLA policy를 학습하는 것이다.",
+    keyIdea:
+      "low-level robot action을 natural language description으로 바꿔 VLM의 pretraining distribution과 맞추고, LoRA로 최소한의 adapter만 학습한다.",
+    contribution:
+      "VLM2VLA는 actions-as-language 표현을 통해 catastrophic forgetting을 줄이고, 실제 로봇 실험에서 zero-shot generalization과 multilingual instruction following을 보인다.",
+  },
+  "13900": {
+    keywords: ["Personalization", "Few-Shot", "Preference Optimization"],
+    abstractKo:
+      "LLM 개인화는 virtual assistant와 content curation 같은 사용자 대면 응용에서 중요하지만, 기존 preference optimization은 전체 사용자 선호를 평균화해 minority viewpoint나 개인별 차이를 놓칠 수 있다. FSPO는 reward modeling을 meta-learning 문제로 재구성해, LLM이 몇 개의 labeled preference만으로 사용자별 reward function을 빠르게 추론하도록 한다. 또한 User Description Rationalization을 활용하고, 공개 LLM으로 만든 100만 개 이상의 synthetic personalized preference를 통해 실제 사용자로의 transfer를 노린다.",
+    problem:
+      "집단 평균 선호에 맞춘 alignment는 개인의 가치, 배경, 상황별 선호를 반영하지 못하고 실제 open-ended QA 개인화가 어렵다.",
+    objective:
+      "소수의 사용자 선호 예시만으로 새로운 사용자에게 빠르게 적응하는 personalized LLM optimization 방법을 만드는 것이다.",
+    keyIdea:
+      "reward modeling을 meta-learning으로 보고, few-shot preference examples와 rationalized user description을 통해 사용자별 reward를 in-context로 추론한다.",
+    contribution:
+      "FSPO는 synthetic preference data를 활용한 few-shot personalization 방법을 제시하고, synthetic 및 real user 평가에서 개인화 응답 품질을 개선한다.",
+  },
+  "18279": {
+    keywords: ["Personalization", "Black-Box LLM", "Reasoning"],
+    abstractKo:
+      "black-box LLM은 널리 쓰이지만 개별 사용자 선호를 놓친 generic output을 생성하기 쉽다. 기존 개인화 방법은 최종 응답만 맞추는 response-level personalization에 머물러, 사용자 행동이 응답으로 이어지는 reasoning 구조를 모델링하지 못한다. RPM은 reasoning-level personalization을 제안하고, raw behavioral data에서 사용자별 reasoning structure를 자동 발견해 personalized reasoning path와 beneficial examples를 구성함으로써 black-box LLM inference를 안내한다.",
+    problem:
+      "black-box LLM 개인화는 파라미터 접근 없이 최종 응답 패턴만 맞추는 경우가 많아, 왜 특정 응답이 사용자에게 맞는지 설명하기 어렵다.",
+    objective:
+      "사용자 행동 데이터에서 응답을 좌우하는 reasoning structure를 찾아, 개인화 성능과 해석 가능성을 함께 높이는 것이다.",
+    keyIdea:
+      "response-influential feature와 statistical factor로 사용자 행동 모델을 만들고, feature-based retrieval로 reasoning path와 예시를 선택해 inference에 넣는다.",
+    contribution:
+      "RPM은 response-level을 넘어 reasoning-level personalization이라는 새 관점을 제시하고, black-box setting에서 성능과 interpretability를 동시에 개선한다.",
+  },
+  "22311": {
+    keywords: ["Persona Alignment", "POMDP", "RL"],
+    abstractKo:
+      "persona LLM에서 사용자의 미묘한 차이를 이해하고 선호에 적응하는 interaction process는 일반적인 human value alignment보다 실제 대화 동역학에 가깝다. 이 논문은 Interact to Persona Alignment 문제를 Persona Alignment MDP, 즉 PAMDP로 정식화하며, 상호작용 중 변화하는 사용자 profile을 assistant가 직접 관측할 수 없는 hidden variable로 본다. 이를 바탕으로 assistant utterance를 continuous latent action으로 표현하는 dual-critic RL framework를 제안한다.",
+    problem:
+      "사용자 선호는 이질적이고 대화 중 변하지만, 일반 RLHF식 단일 reward model은 이런 동적 persona alignment를 충분히 포착하지 못한다.",
+    objective:
+      "대화를 통해 사용자 profile을 점진적으로 추론하고, 그에 맞춰 persona-aligned response를 생성하는 의사결정 프레임워크를 만드는 것이다.",
+    keyIdea:
+      "사용자 profile을 부분관측 hidden state로 두고, assistant의 발화를 continuous latent action으로 모델링한 뒤 dual-critic RL로 policy를 학습한다.",
+    contribution:
+      "PAMDP는 persona alignment를 POMDP로 재정의해, interaction을 통한 개인화 alignment를 이론적/알고리즘적으로 다룬다.",
+  },
+  "8006": {
+    keywords: ["Speculative Decoding", "Test-Time Alignment", "Reward Model"],
+    abstractKo:
+      "GSI는 LLM의 reward-guided decoding을 효율화하기 위한 Guided Speculative Inference 알고리즘이다. soft best-of-n test-time scaling, reward model, 작은 auxiliary model의 speculative samples를 결합해 base model 아래의 optimal tilted policy와 expected reward를 근사한다. reasoning benchmark에서 standard soft best-of-n 및 reward-guided speculative decoding보다 높은 정확도를 보이고, 일부 설정에서는 base model soft best-of-n도 능가하면서 end-to-end latency를 최대 28% 줄인다.",
+    problem:
+      "test-time scaling과 reward-guided decoding은 성능을 높일 수 있지만, 많은 샘플과 큰 모델 호출이 필요해 비용과 latency가 커진다.",
+    objective:
+      "reward-guided test-time alignment의 품질을 유지하거나 높이면서 decoding latency를 줄이는 것이다.",
+    keyIdea:
+      "작은 auxiliary model이 speculative samples를 만들고, reward model과 soft best-of-n 이론을 이용해 base model의 reward-tilted policy를 효율적으로 근사한다.",
+    contribution:
+      "GSI는 speculative decoding과 reward-guided sampling을 결합한 이론적/실험적 프레임워크로, reasoning benchmark에서 정확도와 속도를 동시에 개선한다.",
   },
   "neurips2025-any-stepsize-gd": {
     keywords: ["Optimization", "Theory", "Gradient Descent"],
